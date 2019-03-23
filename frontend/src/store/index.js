@@ -22,6 +22,7 @@ const getters = {
 
 };
 
+
 const store = new Vuex.Store({
   state,
   getters
