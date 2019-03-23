@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Index from '@/components/comm/Index'
 import Personal from '@/components/comm/PersonalCenter'
 import Bookkeep from '@/components/Bookkeeping/Bookkeeping'
-import Login from '@/components/accont/Login'
+import Login from '@/components/accont/login'
 Vue.use(Router);
 
 export default new Router({
