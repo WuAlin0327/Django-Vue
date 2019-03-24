@@ -4,9 +4,9 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 const state = {
-  isLogin: window.sessionStorage.getItem('isLogin'),
-  UserName:window.sessionStorage.getItem('user'),
-  token:window.sessionStorage.getItem('token'),
+  isLogin: window.localStorage.getItem('isLogin'),
+  UserName:window.localStorage.getItem('user'),
+  token:window.localStorage.getItem('token'),
 
 };
 const mutations = {

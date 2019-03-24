@@ -198,16 +198,11 @@
       },
       closeFullscreenDialog() {
         this.openFullscreen = false;
-        console.log(this.DataList);
-        console.log(this.check_list);
-        this.DataList = []
       },
 
     },
     watch: {
-      Datalist() {
-        console.log('这个值改变了')
-      }
+
     }
   }
 </script>
@@ -235,6 +230,9 @@
     width: 33%;
     padding: 20px;
     margin-top: 10px;
+  }
+  .mu-avatar{
+    background-color: #2196f3;
   }
 
 

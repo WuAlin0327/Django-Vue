@@ -57,9 +57,9 @@
                 if (response.data.alert) {
                   this.alert = true
                 } else {
-                  window.sessionStorage.setItem('isLogin', true);
-                  window.sessionStorage.setItem('user', response.data.user);
-                  window.sessionStorage.setItem('token', response.data.token);
+                  window.localStorage.setItem('isLogin', true);
+                  window.localStorage.setItem('user', response.data.user);
+                  window.localStorage.setItem('token', response.data.token);
                   window.location.href = '/'
                 }
               });
