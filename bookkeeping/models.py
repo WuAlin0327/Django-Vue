@@ -1,4 +1,5 @@
 from django.db import models
+from accont.models import UserInfo
 
 # Create your models here.
 class Ofconsumption(models.Model):
@@ -15,6 +16,7 @@ class Ofconsumption(models.Model):
 
 
 class Charge(models.Model):
+    user = models.ForeignKey(to=UserInfo,verbose_name='用户',null=True,on_delete=models.CASCADE)
     doughy = models.IntegerField(verbose_name='金额/元')
     ofconsumption = models.ForeignKey(to=Ofconsumption,on_delete=models.CASCADE)
     ofconsumption_date = models.DateField(verbose_name='时间',auto_now_add=True)

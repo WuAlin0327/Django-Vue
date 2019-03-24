@@ -11,6 +11,7 @@ import store from './store'
 Vue.use(MuseUI);
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-fromurlencodeed';
 axios.defaults.baseURL = 'http://127.0.0.1:8000';
+
 Vue.prototype.$axios = axios;
 
 Vue.config.productionTip = false;

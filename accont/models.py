@@ -11,6 +11,8 @@ class UserInfo(models.Model):
         (2,'VIP用户')
     )
     classes = models.IntegerField(choices=classes_choices,default=1)
+    def __str__(self):
+        return self.username
 
 
 class Token(models.Model):

@@ -4,11 +4,17 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 const state = {
-  isLogin: false,
-  UserName:'',
-  token:'',
+  isLogin: window.sessionStorage.getItem('isLogin'),
+  UserName:window.sessionStorage.getItem('user'),
+  token:window.sessionStorage.getItem('token'),
 
 };
+const mutations = {
+  Login(state){
+    state.isLogin = !state.isLogin
+  }
+};
+
 const getters = {
   Login(state) {
     return state.isLogin
@@ -25,7 +31,8 @@ const getters = {
 
 const store = new Vuex.Store({
   state,
-  getters
+  getters,
+  mutations
 });
 
 export default store

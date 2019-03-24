@@ -1,8 +1,10 @@
 <template>
   <div style="margin-top: 30px">
-      <mu-alert color="error" delete v-if="alert" @delete="closeAlert()">
-    <mu-icon left value="warning"></mu-icon>账号或者密码错误，请重试！
-  </mu-alert>
+    <p>{{login}}</p>
+    <mu-alert color="error" delete v-if="alert" @delete="closeAlert()">
+      <mu-icon left value="warning"></mu-icon>
+      账号或者密码错误，请重试！
+    </mu-alert>
 
     <mu-form ref="form" :model="validateForm" class="mu-demo-form">
       <mu-form-item label="用户名" prop="username" :rules="usernameRules">
@@ -39,27 +41,29 @@
           password: '',
           isAgree: false
         },
-        alert:false
+        alert: false
       }
     },
+    props:['login'],
     methods: {
       submit() {
         this.$refs.form.validate()
           .then((result) => {
             var params = new URLSearchParams();
             params.append('username', this.$refs.form.model.username);
-            params.append('password',this.$refs.form.model.password);
-            this.$axios.post('/api/login/',params)
-              .then(response =>{
-                if (response.data.alert){
+            params.append('password', this.$refs.form.model.password);
+            this.$axios.post('/api/login/', params)
+              .then(response => {
+                if (response.data.alert) {
                   this.alert = true
-                }else{
-                  console.log('登陆成功')
+                } else {
+                  window.sessionStorage.setItem('isLogin', true);
+                  window.sessionStorage.setItem('user', response.data.user);
+                  window.sessionStorage.setItem('token', response.data.token);
+                  window.location.href = '/'
                 }
-              })
-
+              });
           });
-
       },
       clear() {
         this.$refs.form.clear();
@@ -69,10 +73,12 @@
           isAgree: false
         };
       },
-      closeAlert(){
+      closeAlert() {
         this.alert = false
       }
-    }
+    },
+
+
   };
 
 </script>

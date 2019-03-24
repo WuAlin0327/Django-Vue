@@ -7,6 +7,7 @@ import Login from '@/components/accont/login'
 Vue.use(Router);
 
 export default new Router({
+  mode:'history',
   routes: [
     {
       path: '/',
@@ -21,7 +22,8 @@ export default new Router({
     {
       path:'/bookkeep/',
       name:'bookkeep',
-      component:Bookkeep
+      component:Bookkeep,
+
     },
     {
       path:"/login/",

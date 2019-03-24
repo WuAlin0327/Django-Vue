@@ -3,6 +3,8 @@ from django.urls import path,include
 from django.views.generic.base import TemplateView
 from bookkeeping import views
 
+
 urlpatterns = [
-    path('charge/',views.ChargeAPIView.as_view())
+    path('charge/',views.ChargeAPIView.as_view()),
+    path('consu_type/',views.OfconsumptionAPIViwe.as_view())
 ]
