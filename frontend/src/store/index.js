@@ -12,6 +12,17 @@ const state = {
 const mutations = {
   Login(state){
     state.isLogin = !state.isLogin
+  },
+  clear(state){
+    state.isLogin = false;
+    state.UserName = '';
+    state.token = '';
+  },
+  login_sucess(state,data){
+    console.log(data);
+    state.isLogin = true;
+    state.UserName = data.user;
+    state.token = data.token
   }
 };
 

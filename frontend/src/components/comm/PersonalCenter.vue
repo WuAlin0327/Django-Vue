@@ -65,12 +65,16 @@
     data() {
       return {
         size: 40,
-        isLogin: this.$store.state.isLogin,
-        username: this.$store.state.UserName,
+        isLogin: this.$store.getters.Login,
       }
     },
     created() {
-
+    console.log(this.$store.getters.User)
+    },
+    computed:{
+      username(){
+        return this.$store.getters.User
+      }
     }
 
   }

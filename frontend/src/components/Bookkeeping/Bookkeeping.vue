@@ -116,7 +116,7 @@
     },
     created() {
       // var params = new URLSearchParams;
-      var token = this.$store.state.token;
+      var token = this.$store.getters.Token;
       var isLogin = this.$store.getters.Login;
       if (isLogin) {
         this.$axios.get('/api/charge/?token=' + token)
@@ -153,9 +153,8 @@
           })
       },
       AddBookkeeping() {
-        const token = this.$store.state.token;
+        const token = this.$store.getters.Token;
         const isLogin = this.$store.getters.Login;
-
         if (isLogin) {
           var params = new URLSearchParams;
           params.append('ofconsumption_id', this.form.radio);

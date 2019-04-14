@@ -91,13 +91,18 @@ WSGI_APPLICATION = 'Personal.wsgi.application'
 # Personal
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': '120.77.82.121',
+        'PORT': 3306,
+        'USER':'root',
+        'PASSWORD':'wualin123',
+        'NAME':'Personal'
     }
 }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {

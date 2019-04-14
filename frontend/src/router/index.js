@@ -11,7 +11,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component:Index
+      component:Bookkeep
 
     },
     {
@@ -29,6 +29,11 @@ export default new Router({
       path:"/login/",
       name:"login",
       component:Login
+    },
+    {
+      path:"/index",
+      name:'Index',
+      component:Index
     }
   ]
 })

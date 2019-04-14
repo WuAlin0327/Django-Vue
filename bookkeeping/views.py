@@ -4,6 +4,7 @@ from rest_framework import generics
 from bookkeeping import serializers
 from rest_framework.response import Response
 from bookkeeping import models
+import time
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from accont.Auth import UserAuth
 
@@ -19,7 +20,8 @@ class ChargeAPIView(generics.ListCreateAPIView):
 
 
     def get(self, request, *args, **kwargs):
-        self.queryset = self.queryset.filter(user_id=request.user.id)
+        month = time.localtime(time.time()).tm_mon
+        self.queryset = self.queryset.filter(user_id=request.user.id,ofconsumption_date__month=month)
         response = []
         for obj in self.queryset.all().order_by('-ofconsumption_date'):
             dic = {}

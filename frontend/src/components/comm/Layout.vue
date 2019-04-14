@@ -40,14 +40,14 @@
           </mu-bottom-sheet>
         </mu-menu>
         <mu-menu slot="right" v-else>
-          <mu-button flat to="login">登陆</mu-button>
+          <mu-button flat @click="loginHandler()">登陆</mu-button>
         </mu-menu>
       </mu-appbar>
     </div>
     <mu-container v-bind:style="{marginTop:'60px',marginBottom:'60px'}">
 
       <mu-load-more>
-        <keep-alive v-bind:include="['Bookkeeping']">
+        <keep-alive v-bind:include="['']">
           <slot></slot>
         </keep-alive>
       </mu-load-more>
@@ -56,7 +56,7 @@
     <div style="position: fixed;bottom: 0;width: 100%">
       <mu-bottom-nav>
         <mu-bottom-nav-item title="首页" icon="home" to="/"></mu-bottom-nav-item>
-        <mu-bottom-nav-item title="收藏" icon="favorite"></mu-bottom-nav-item>
+        <mu-bottom-nav-item title="菜单" icon="favorite" to="/index" ></mu-bottom-nav-item>
         <mu-bottom-nav-item title="个人中心" icon="perm_identity" to="personal"></mu-bottom-nav-item>
       </mu-bottom-nav>
     </div>
@@ -72,27 +72,34 @@
     data() {
       return {
         shift: 'movies',
-        isLogin: this.$store.getters.Login,
         user: this.$store.getters.User,
         open: false,
-
       }
     },
     methods: {
       Logout() {
-        window.sessionStorage.clear();
-        this.$store.state.isLogin = false;
-        this.$store.state.UserName = '';
-        this.$store.state.token = '';
-        this.isLogin = false;
-        window.location.href = '/';
-        console.log('退出了')
+        window.localStorage.clear();
+        this.$store.commit('clear');
+        this.open = false;
+        this.$router.push({
+          name:'login'
+        })
       },
       openBotttomSheet() {
         this.open = true;
       },
-
+      loginHandler(){
+        this.$router.push({
+          name:'login'
+        })
+      }
     },
+    computed:{
+      isLogin(){
+        return this.$store.getters.Login
+      }
+    }
+
 
 
   }

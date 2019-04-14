@@ -60,7 +60,8 @@
                   window.localStorage.setItem('isLogin', true);
                   window.localStorage.setItem('user', response.data.user);
                   window.localStorage.setItem('token', response.data.token);
-                  window.location.href = '/'
+                  this.$store.commit('login_sucess',response.data);
+                  this.$router.push('/')
                 }
               });
           });
